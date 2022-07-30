@@ -1,4 +1,3 @@
-import './App.css';
 import MainScreen from './views/screens/MainScreen';
 
 function App() {
