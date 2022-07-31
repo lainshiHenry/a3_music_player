@@ -1,49 +1,51 @@
-import React, { useState } from 'react'
-import PlayerActionButton from './PlayerActionButton'
+import React, { useState, useRef, useEffect } from 'react'
 import PlayerDetails from './PlayerDetails'
 import PlayerControls from './PlayerControls'
 
-const Player = ({ song, nextSong }) => {
-
+const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }) => {
+    const audioElement = useRef(null);
     const [isPlaying, setIsPlaying] = useState(false);
-    const LeftButton = <i className='fas fa-step-backward'></i>
-    const RightButton = <i className='fas fa-step-forward'></i>
-    const PlayButton = <i className='fas fa-play'></i>
-    const PauseButton = <i className='fas fa-pause'></i>
-    const [playerActionButtonIcon, setPlayerActionButtonIcon] = useState(PlayButton);
 
-    function handlePlayPauseButton() {
+    useEffect(() => {
         if (isPlaying) {
-            setIsPlaying(false);
-            setPlayerActionButtonIcon(PlayButton);
-            console.log('Dev: User Selected Player has been paused');
+            audioElement.current.play();
         } else {
-            setIsPlaying(true);
-            setPlayerActionButtonIcon(PauseButton);
-            console.log('Dev: User Selected Player is now playing');
+            audioElement.current.pause();
+        }
+    });
+
+    const SkipSong = (forwards = true) => {
+        if (forwards) {
+            setCurrentSongIndex(() => {
+                let temp = currentSongIndex;
+                temp++;
+
+                if (temp > songs.length - 1) {
+                    temp = 0;
+                }
+                return temp;
+            })
+        } else {
+            setCurrentSongIndex(() => {
+                let temp = currentSongIndex;
+                temp--;
+
+                if (temp < 0) {
+                    temp = songs.length - 1;
+                }
+                return temp;
+            })
         }
     }
 
-    function handleBackButton() {
-        console.log('Dev: User selected go back');
-    }
-
-    function handleForwardButton() {
-        console.log('Dev: User selected go forward');
-    }
 
     return (
         <div className='c-player'>
-            <PlayerDetails song={song} />
-            <PlayerControls />
-            {/* <div className='playerButtonControls'>
-                <PlayerActionButton buttonIcon={LeftButton} onClickFunction={handleBackButton} isLargeButton={false} />
-                <PlayerActionButton buttonIcon={playerActionButtonIcon} onClickFunction={handlePlayPauseButton} isLargeButton={true} />
-                <PlayerActionButton buttonIcon={RightButton} onClickFunction={handleForwardButton} isLargeButton={false} />
-            </div> */}
-            <p><strong>Next up:</strong> {nextSong.title} by {nextSong.artist}</p>
+            <audio src={songs[currentSongIndex].src} ref={audioElement}></audio>
+            <PlayerDetails song={songs[currentSongIndex]} />
+            <PlayerControls isPlaying={isPlaying} setIsPlaying={setIsPlaying} skipSong={SkipSong} />
+            <p><strong>Next up:</strong> {songs[nextSongIndex].title} by {songs[nextSongIndex].artist}</p>
         </div>
     )
 }
-
-export default Player
+export default Player;
