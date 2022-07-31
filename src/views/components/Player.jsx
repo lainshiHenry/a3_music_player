@@ -3,19 +3,22 @@ import PlayerActionButton from './PlayerActionButton'
 import "./player.css"
 
 const Player = ({ musicTitle = '', musicArtistName = '', musicCoverImage = null }) => {
-    const [playerActionButtonText, setPlayerActionButtonText] = useState('');
+
     const [isPlaying, setIsPlaying] = useState(false);
-    const leftArrow = 'Left';
-    const rightArrow = 'Right';
+    const LeftButton = <i className='fas fa-step-backward'></i>
+    const RightButton = <i className='fas fa-step-forward'></i>
+    const PlayButton = <i className='fas fa-play'></i>
+    const PauseButton = <i className='fas fa-pause'></i>
+    const [playerActionButtonIcon, setPlayerActionButtonIcon] = useState(PlayButton);
 
     function handlePlayPauseButton() {
         if (isPlaying) {
             setIsPlaying(false);
-            setPlayerActionButtonText('Play');
+            setPlayerActionButtonIcon(PlayButton);
             console.log('Dev: User Selected Player has been paused');
         } else {
             setIsPlaying(true);
-            setPlayerActionButtonText('Pause');
+            setPlayerActionButtonIcon(PauseButton);
             console.log('Dev: User Selected Player is now playing');
         }
     }
@@ -36,9 +39,9 @@ const Player = ({ musicTitle = '', musicArtistName = '', musicCoverImage = null 
                 <h3>{musicArtistName}</h3>
             </div>
             <div className='playerButtonControls'>
-                <PlayerActionButton buttonIcon={leftArrow} onClickFunction={handleBackButton} isLargeButton={false} />
-                <PlayerActionButton buttonIcon={playerActionButtonText} onClickFunction={handlePlayPauseButton} isLargeButton={true} />
-                <PlayerActionButton buttonIcon={rightArrow} onClickFunction={handleForwardButton} isLargeButton={false} />
+                <PlayerActionButton buttonIcon={LeftButton} onClickFunction={handleBackButton} isLargeButton={false} />
+                <PlayerActionButton buttonIcon={playerActionButtonIcon} onClickFunction={handlePlayPauseButton} isLargeButton={true} />
+                <PlayerActionButton buttonIcon={RightButton} onClickFunction={handleForwardButton} isLargeButton={false} />
             </div>
         </div>
     )

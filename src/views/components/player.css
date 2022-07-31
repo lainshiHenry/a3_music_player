@@ -5,16 +5,14 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
-    background-color: aqua;
+    background-color: white;
 }
 
 .playerButtonControls {
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    background-color: teal;
+    align-items: end;
 }
 
 .playerMusicPicture {

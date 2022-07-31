@@ -1,5 +1,5 @@
 .playerActionButton {
-    background-color: #4CAF50;
+    background-color: gray;
     /* Green */
     border: none;
     color: white;
@@ -9,6 +9,7 @@
     display: inline-block;
     margin: 4px 2px;
     cursor: pointer;
+    border-radius: 40%;
 }
 
 .largeButton {
