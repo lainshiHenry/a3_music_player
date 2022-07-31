@@ -2,7 +2,10 @@ import MainScreen from './views/screens/MainScreen';
 
 function App() {
   return (
-    <MainScreen />
+    <div className='App'>
+      <MainScreen />
+    </div>
+
   );
 }
 

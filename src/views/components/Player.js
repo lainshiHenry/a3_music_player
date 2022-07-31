@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import PlayerActionButton from './PlayerActionButton'
-import "./player.css"
+import PlayerDetails from './PlayerDetails'
+import PlayerControls from './PlayerControls'
 
-const Player = ({ musicTitle = '', musicArtistName = '', musicCoverImage = null }) => {
+const Player = ({ song, nextSong }) => {
 
     const [isPlaying, setIsPlaying] = useState(false);
     const LeftButton = <i className='fas fa-step-backward'></i>
@@ -32,17 +33,15 @@ const Player = ({ musicTitle = '', musicArtistName = '', musicCoverImage = null 
     }
 
     return (
-        <div className='player'>
-            <div className='playerMusicPicture'>
-                <img className='musicPicture' src={musicCoverImage} alt=''></img>
-                <h1>{musicTitle}</h1>
-                <h3>{musicArtistName}</h3>
-            </div>
-            <div className='playerButtonControls'>
+        <div className='c-player'>
+            <PlayerDetails song={song} />
+            <PlayerControls />
+            {/* <div className='playerButtonControls'>
                 <PlayerActionButton buttonIcon={LeftButton} onClickFunction={handleBackButton} isLargeButton={false} />
                 <PlayerActionButton buttonIcon={playerActionButtonIcon} onClickFunction={handlePlayPauseButton} isLargeButton={true} />
                 <PlayerActionButton buttonIcon={RightButton} onClickFunction={handleForwardButton} isLargeButton={false} />
-            </div>
+            </div> */}
+            <p><strong>Next up:</strong> {nextSong.title} by {nextSong.artist}</p>
         </div>
     )
 }
