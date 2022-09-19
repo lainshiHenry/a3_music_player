@@ -27,14 +27,26 @@ body {
 .App {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     min-height: 100vh;
+}
+
+.progress {
+    height: 5px;
+    -webkit-appearance: none;
+    margin: 0 5%;
+    width: 90%;
+    margin-bottom: 10px border-radius 8px;
+    background: #ddd;
+    transition: background 0.2s ease;
+    cursor: pointer;
 }
 
 .c-player {
     display: block;
     background-color: #313131;
-    padding: 50px;
+    padding: 10px 20px;
+    margin: 0 20px;
     border-radius: 16px;
     box-shadow: inset -6px -6px 12px rgba(0, 0, 0, 0.8), inset 6px 6px 12px rgba(255, 255, 255, 0.4);
 }
@@ -57,29 +69,32 @@ body {
 .c-player--details .details-img {
     position: relative;
     width: fit-content;
-    margin: 50px auto;
+    /* margin: 50px auto; */
+    margin: 20px auto;
 }
 
 .c-player--details .details-img img {
     display: block;
     margin: 0 auto;
     width: 100%;
-    max-width: 250px;
-    border-radius: 50%;
+    /* max-width: 125px; */
+    max-width: 8rem;
+    padding-top: 5%;
+    /* border-radius: 50%; */
     box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8), -6px -6px 12px rgba(255, 255, 255, 0.4);
 }
 
 .c-player--details .details-title {
     color: #EEE;
-    font-size: 28px;
+    font-size: 1.4rem;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 4px rgba(255, 255, 255, 0.4);
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 .c-player--details .details-artist {
     color: #AAA;
-    font-size: 20px;
+    font-size: 0.9rem;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), -2px -2px 4px rgba(255, 255, 255, 0.4);
     margin-bottom: 20px;
@@ -89,13 +104,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 .c-player--controls .play-btn {
     display: flex;
     margin: 0 30px;
-    padding: 20px;
+    padding: 10px;
     border-radius: 50%;
     box-shadow:
         4px 4px 10px rgba(0, 0, 0, 0.8),
