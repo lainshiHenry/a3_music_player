@@ -6,7 +6,8 @@ import songsList from '../../data/songsList'
 const MainScreen = () => {
   const playlistController: PlaylistController = new PlaylistController();
 
-  const [songs] = useState(songsList);
+  // const [songs] = useState(songsList);
+  const [songs] = useState(playlistController.getCurrentPlaylist);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
 
@@ -19,10 +20,6 @@ const MainScreen = () => {
       }
     });
   }, [currentSongIndex, songs]);
-
-  useEffect(() => {
-    console.log(playlistController.getCurrentPlaylist);
-  })
 
   return (
     <div>

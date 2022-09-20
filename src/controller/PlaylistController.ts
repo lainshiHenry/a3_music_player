@@ -1,4 +1,6 @@
 import Song from './class/Song'
+import '../data/songsList'
+import songsList from '../data/songsList';
 
 declare module PlaylistController { };
 
@@ -12,6 +14,7 @@ export default class PlaylistController {
 
     addSongToPlaylist(song: Song) {
         this.playList.push(song);
+        console.log('after add: ' + this.playList);
     }
 
     getNextSong() {
@@ -22,7 +25,8 @@ export default class PlaylistController {
 
     _buildInitialList() {
         // let tempSong: Song = new Song('test', 'test', 'test', 'test');
-
-
+        songsList.forEach((songItem) => {
+            this.addSongToPlaylist(songItem);
+        });
     }
 }
