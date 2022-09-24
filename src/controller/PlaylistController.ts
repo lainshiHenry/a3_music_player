@@ -1,6 +1,6 @@
 import Song from './class/Song'
-import '../data/songsList'
-import songsList from '../data/songsList';
+import '../songsList'
+import songsList from '../songsList';
 
 declare module PlaylistController { };
 
