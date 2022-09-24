@@ -13,6 +13,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     const audioElement = useRef(htmlAudioElement);
     const intervalRef = useRef(0);
     const isReady = useRef(false);
+    let playAudio: Function;
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackProgress, setTrackProgress] = useState(0);
 
@@ -29,7 +30,6 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
                 }
                 return temp;
             })
-
         } else {
             setCurrentSongIndex(() => {
                 let temp = currentSongIndex;
@@ -41,9 +41,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
                 return temp;
             })
         }
-        // stop audio and set isPlaying to false when changing tracks
-        audioElement.current.pause();
-        setIsPlaying(false);
+        playAudio();
     }, [currentSongIndex, setCurrentSongIndex, songs]);
 
     const startTimer = useCallback(() => {
@@ -58,14 +56,39 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
         }, 1000);
     }, [SkipSong]);
 
+    playAudio = useCallback(() => {
+        let playPromise = document.querySelector('audio')?.play();
+
+        if (playPromise) {
+            playPromise
+                .then(function () {
+                    audioElement.current.play();
+                    audioElement.current.muted = false;
+                    setIsPlaying(true);
+                    startTimer();
+                })
+                .catch(function (error) {
+                    console.log('error: ' + error)
+                });
+        }
+    }, [startTimer]);
+
+    const pauseAudio = () => {
+        audioElement.current.pause();
+        setIsPlaying(false);
+    }
+
+
+
+
+
     useEffect(() => {
         if (isPlaying) {
-            audioElement.current.play();
-            startTimer();
+            playAudio();
         } else {
-            audioElement.current.pause();
+            pauseAudio();
         }
-    }, [isPlaying, startTimer]);
+    }, [isPlaying, playAudio]);
 
 
     // useEffect(() => {
@@ -76,21 +99,19 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     // }, []);
 
     useEffect(() => {
-        audioElement.current.pause();
+        // pauseAudio();
 
         // audioElement.current = new Audio(songs[nextSongIndex].getSong.songLocation);
 
         setTrackProgress(audioElement.current.currentTime);
 
         if (isReady.current) {
-            audioElement.current.play();
-            setIsPlaying(true);
-            startTimer();
+            playAudio();
         } else {
-            isReady.current = true;
+            // isReady.current = true;
         }
 
-    }, [currentSongIndex, nextSongIndex, songs, startTimer]);
+    }, [currentSongIndex, nextSongIndex, songs, playAudio]);
 
 
 
@@ -111,7 +132,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     return (
         <div>
             <div className='c-player' >
-                <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} > </audio>
+                <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} muted={true}> </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input
                     type='range'
