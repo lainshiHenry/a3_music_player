@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import PlayerDetails from './PlayerDetails'
 import PlayerControls from './PlayerControls'
 import Song from '../../controller/class/Song';
+import { useCallback } from 'react';
 
 // interface Player {
 
@@ -17,64 +18,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
 
     const { duration } = audioElement.current;
 
-    useEffect(() => {
-        if (isPlaying) {
-            audioElement.current.play();
-            startTimer();
-        } else {
-            audioElement.current.pause();
-        }
-    }, [isPlaying]);
-
-    // useEffect(() => {
-    //     return () => {
-    //         audioElement.current.pause();
-    //         clearInterval(intervalRef.current);
-    //     }
-    // }, []);
-
-    useEffect(() => {
-        audioElement.current.pause();
-
-        audioElement.current = new Audio(songs[nextSongIndex].getSong.songLocation);
-        setTrackProgress(audioElement.current.currentTime);
-
-        if (isReady.current) {
-            audioElement.current.play();
-            setIsPlaying(true);
-            startTimer();
-        } else {
-            isReady.current = true;
-        }
-
-    }, [currentSongIndex]);
-
-    const startTimer = () => {
-        clearInterval(intervalRef.current);
-
-        intervalRef.current = setInterval(() => {
-            if (audioElement.current.ended) {
-                SkipSong();
-            } else {
-                setTrackProgress(audioElement.current.currentTime);
-            }
-        }, 1000);
-    }
-
-    const onScrub = (value: number) => {
-        clearInterval(intervalRef.current);
-        audioElement.current.currentTime = value;
-        setTrackProgress(audioElement.current.currentTime);
-    }
-
-    const onScrubEnd = () => {
-        if (!isPlaying) {
-            setIsPlaying(true);
-        }
-        startTimer();
-    }
-
-    const SkipSong = (forwards = true) => {
+    const SkipSong = useCallback((forwards = true) => {
         if (forwards) {
             setCurrentSongIndex(() => {
                 let temp = currentSongIndex;
@@ -100,6 +44,67 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
         // stop audio and set isPlaying to false when changing tracks
         audioElement.current.pause();
         setIsPlaying(false);
+    }, [currentSongIndex, setCurrentSongIndex, songs]);
+
+    const startTimer = useCallback(() => {
+        clearInterval(intervalRef.current);
+
+        intervalRef.current = setInterval(() => {
+            if (audioElement.current.ended) {
+                SkipSong();
+            } else {
+                setTrackProgress(audioElement.current.currentTime);
+            }
+        }, 1000);
+    }, [SkipSong]);
+
+    useEffect(() => {
+        if (isPlaying) {
+            audioElement.current.play();
+            startTimer();
+        } else {
+            audioElement.current.pause();
+        }
+    }, [isPlaying, startTimer]);
+
+
+    // useEffect(() => {
+    //     return () => {
+    //         audioElement.current.pause();
+    //         clearInterval(intervalRef.current);
+    //     }
+    // }, []);
+
+    useEffect(() => {
+        audioElement.current.pause();
+
+        // audioElement.current = new Audio(songs[nextSongIndex].getSong.songLocation);
+
+        setTrackProgress(audioElement.current.currentTime);
+
+        if (isReady.current) {
+            audioElement.current.play();
+            setIsPlaying(true);
+            startTimer();
+        } else {
+            isReady.current = true;
+        }
+
+    }, [currentSongIndex, nextSongIndex, songs, startTimer]);
+
+
+
+    const onScrub = (value: number) => {
+        clearInterval(intervalRef.current);
+        audioElement.current.currentTime = value;
+        setTrackProgress(audioElement.current.currentTime);
+    }
+
+    const onScrubEnd = () => {
+        if (!isPlaying) {
+            setIsPlaying(true);
+        }
+        startTimer();
     }
 
 
@@ -113,7 +118,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
                     value={trackProgress}
                     step='1'
                     min='0'
-                    max={duration ? duration : '${duration}'}
+                    max={duration ? duration : 'NaN'}
                     className='progress'
                     onChange={(e) => onScrub(Number(e.target.value))}
                     onMouseUp={onScrubEnd}

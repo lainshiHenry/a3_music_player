@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import Player from '../components/Player'
 import PlaylistController from '../../controller/PlaylistController'
-import songsList from '../../data/songsList'
-import Song from '../../controller/class/Song'
+import Playlist from '../components/Playlist'
 
 const MainScreen = () => {
   const playlistController: PlaylistController = new PlaylistController();
@@ -33,15 +32,11 @@ const MainScreen = () => {
 
   return (
     <div className='mainScreenLayout'>
-      <div className='playlistSection'>
-        <ul>
-          {
-            songs.map((element: Song, index: number) => {
-              return currentSongIndex === index ? <li key={element.getSong.title}><b>{element.getSong.title} - {element.getSong.artist}</b></li> : <li key={element.getSong.title} onClick={() => selectSong(index)}>{element.getSong.title} - {element.getSong.artist}</li>
-            }
-            )}
-        </ul>
-      </div>
+      <Playlist
+        songs={songs}
+        currentSongIndex={currentSongIndex}
+        selectSong={selectSong}
+      />
       <Player
         currentSongIndex={currentSongIndex}
         setCurrentSongIndex={selectSong}
