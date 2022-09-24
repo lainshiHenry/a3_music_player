@@ -44,7 +44,7 @@ const MainScreen = () => {
         songs={songs}
         songSelectedViaClick={songSelectedViaClick}
       />
-
+      <p id="errorMessage"></p>
     </div>
 
   );

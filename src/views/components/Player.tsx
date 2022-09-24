@@ -70,7 +70,12 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
                     startTimer();
                 })
                 .catch(function (error) {
-                    console.log('error: ' + error)
+                    console.log('error: ' + error);
+                    const errorMessageHTMLelement = document.getElementById('errorMessage');
+                    if (errorMessageHTMLelement) {
+                        errorMessageHTMLelement.innerHTML = error;
+                    }
+
                 });
         }
     }, [startTimer]);
