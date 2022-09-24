@@ -109,13 +109,13 @@ const songsList: Song[] = [
         title: 'Wonderland A Go Go!',
         artist: 'Masumi Usui & Itaru Chigasaki',
         img_src: '../assets/images/song_covers/troupe_song/spring/wonderland_a_go_go.jpg',
-        src: '../assets/music/circle_of_seasons.mp3',
+        src: '../assets/music/wonderland_a_go_go.mp3',
     }),
     new Song({
         title: 'Omoide no Nejimaki',
         artist: 'Tsuzuru Minagi & Citron',
         img_src: '../assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: '../assets/music/circle_of_seasons.mp3',
+        src: '../assets/music/omoide_no_nejimaki.mp3',
     }),
     new Song({
         title: 'Dandelion no Akubi',
@@ -205,7 +205,7 @@ const songsList: Song[] = [
         title: 'Shoutai',
         artist: 'Tasuku Takoto & Azuma Yukishiro',
         img_src: '../assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: '../assets/music/circle_of_seasons.mp3',
+        src: '../assets/music/shoutai.mp3',
     }),
     new Song({
         title: 'Traumerei to Kuhaku',
@@ -216,16 +216,16 @@ const songsList: Song[] = [
     new Song({
         title: 'Kiteretsu Poemer',
         artist: 'Homare Arisugawa',
-        img_src: '../assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: '../assets/music/circle_of_seasons.mp3',
+        img_src: '../assets/images/song_covers/character_song/homare.png',
+        src: '../assets/music/kiteretsu_poemer.mp3',
     }),
 
 
     new Song({
         title: 'Gekkoujou no Aria',
         artist: 'Azuma Yukishiro',
-        img_src: '../assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: '../assets/music/circle_of_seasons.mp3',
+        img_src: '../assets/images/song_covers/character_song/azami.png',
+        src: '../assets/music/gekkoujou_no_aria.mp3',
     }),
     new Song({
         title: 'Usotsuki wa Mahou no Hajimari',
@@ -243,7 +243,7 @@ const songsList: Song[] = [
         title: 'Petenshi no Yuutsu',
         artist: 'Chikage Utsuki',
         img_src: '../assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: '../assets/music/circle_of_seasons.mp3',
+        src: '../assets/music/petenshi_no_yuutsu.mp3',
     }),
 
 
@@ -269,7 +269,7 @@ const songsList: Song[] = [
         title: 'Second Shot',
         artist: 'Autumn Troupe',
         img_src: '../assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: '../assets/music/circle_of_seasons.mp3',
+        src: '../assets/music/second_shot.mp3',
     }),
     new Song({
         title: 'Respawn',
@@ -280,10 +280,27 @@ const songsList: Song[] = [
     new Song({
         title: 'Gaki Atsukai',
         artist: 'Azami Izumida',
-        img_src: '../assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: '../assets/music/circle_of_seasons.mp3',
+        img_src: '../assets/images/song_covers/character_song/azami.png',
+        src: '../assets/music/gaki_atsukai.mp3',
     }),
-
+    new Song({
+        title: 'Thawing',
+        artist: 'Winter Troupe',
+        img_src: '../assets/images/song_covers/character_song/thawing.png',
+        src: '../assets/music/thawing.mp3',
+    }),
+    new Song({
+        title: 'Step',
+        artist: 'Tasuku & Homare',
+        img_src: '../assets/images/song_covers/troupe_song/winter/step.png',
+        src: '../assets/music/step.mp3',
+    }),
+    new Song({
+        title: 'Precious To Us',
+        artist: 'Winter Troupe',
+        img_src: '../assets/images/song_covers/troupe_song/winter/precious_to_us.png',
+        src: '../assets/music/precious_to_us.mp3',
+    }),
 ];
 
 export default songsList;
@@ -301,7 +318,6 @@ export default songsList;
     "A3 - Haru Natsu Aki Fuyu Blooming",
     "Natsu tte Pari Pari! - Summer Troupe",
     "Road to Mantou Master! - Taichi Nanao & Azami Izumida",
-    "Precious To Us - Winter Troupe",
     "Unmask - Tsumugi Tsukioka & Guy",
     "Dokkoudou - Tasuku Takato & Guy",
     "Defragmentation - Guy",
@@ -346,7 +362,6 @@ export default songsList;
     "Rojiura wa Itsumo Niwakaame - Sakyo Furuichi",
     "Teenager - Azami Izumida",
     "Zero Limit - Autumn Troupe",
-    "Thawing - Winter Troupe",
     "Monologue - Sakuya Sakuma",
     "CROSS LINES - Tsumugi Tsukioka",
     "Train Myself - Tasuku Takato",
@@ -361,6 +376,5 @@ export default songsList;
     "Hungry Neighbors - Omi Fushimi & Sakyo Furuichi",
     "Continuation of the Grand Stay - Azuma Yukishiro & Guy",
     "Wandering Ghost - Juza Hyodo & Azami Izumida",
-    "Step - Tasuku Takato & Homare Arisugawa",
     "Family Activation - Itaru Chigasaki & Citron", 
 */
