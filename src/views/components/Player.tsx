@@ -3,11 +3,11 @@ import PlayerDetails from './PlayerDetails'
 import PlayerControls from './PlayerControls'
 import Song from '../../controller/class/Song';
 
-interface Player {
+// interface Player {
 
-};
+// };
 
-const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }: { currentSongIndex: number, setCurrentSongIndex: Function, nextSongIndex: number, songs: Song[] }) => {
+const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, songSelectedViaClick }: { currentSongIndex: number, setCurrentSongIndex: Function, nextSongIndex: number, songs: Song[], songSelectedViaClick: boolean }) => {
     const htmlAudioElement = new Audio(songs[currentSongIndex].getSong.songLocation);
     const audioElement = useRef(htmlAudioElement);
     const intervalRef = useRef(0);
@@ -26,12 +26,12 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
         }
     }, [isPlaying]);
 
-    useEffect(() => {
-        return () => {
-            audioElement.current.pause();
-            clearInterval(intervalRef.current);
-        }
-    }, []);
+    // useEffect(() => {
+    //     return () => {
+    //         audioElement.current.pause();
+    //         clearInterval(intervalRef.current);
+    //     }
+    // }, []);
 
     useEffect(() => {
         audioElement.current.pause();
@@ -44,7 +44,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
             setIsPlaying(true);
             startTimer();
         } else {
-            // isReady.current = true;
+            isReady.current = true;
         }
 
     }, [currentSongIndex]);
@@ -85,6 +85,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
                 }
                 return temp;
             })
+
         } else {
             setCurrentSongIndex(() => {
                 let temp = currentSongIndex;
@@ -96,26 +97,32 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
                 return temp;
             })
         }
+        // stop audio and set isPlaying to false when changing tracks
+        audioElement.current.pause();
+        setIsPlaying(false);
     }
 
 
     return (
-        <div className='c-player' >
-            <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} > </audio>
-            <PlayerDetails song={songs[currentSongIndex]} />
-            <input
-                type='range'
-                value={trackProgress}
-                step='1'
-                min='0'
-                max={duration ? duration : '${duration}'}
-                className='progress'
-                onChange={(e) => onScrub(Number(e.target.value))}
-                onMouseUp={onScrubEnd}
-                onKeyUp={onScrubEnd}
-            />
-            <PlayerControls isPlaying={isPlaying} setIsPlaying={setIsPlaying} skipSong={SkipSong} />
-            {/* <p><strong>Next up:</strong> {songs[nextSongIndex].title} by {songs[nextSongIndex].artist}</p> */}
+        <div>
+            <div className='c-player' >
+                <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} > </audio>
+                <PlayerDetails song={songs[currentSongIndex]} />
+                <input
+                    type='range'
+                    value={trackProgress}
+                    step='1'
+                    min='0'
+                    max={duration ? duration : '${duration}'}
+                    className='progress'
+                    onChange={(e) => onScrub(Number(e.target.value))}
+                    onMouseUp={onScrubEnd}
+                    onKeyUp={onScrubEnd}
+                />
+                <PlayerControls isPlaying={isPlaying} setIsPlaying={setIsPlaying} skipSong={SkipSong} />
+                {/* <p><strong>Next up:</strong> {songs[nextSongIndex].getSong.title} by {songs[nextSongIndex].getSong.artist}</p> */}
+            </div>
+
         </div>
     )
 }

@@ -14,7 +14,6 @@ export default class PlaylistController {
 
     addSongToPlaylist(song: Song) {
         this.playList.push(song);
-        console.log('after add: ' + this.playList);
     }
 
     getNextSong() {

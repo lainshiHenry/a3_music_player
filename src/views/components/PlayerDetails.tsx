@@ -3,7 +3,6 @@ import Song from '../../controller/class/Song'
 
 
 function PlayerDetails({ song }: { song: Song; }) {
-    console.log(song.getSong.songImgUrl);
     return (
         <div className='c-player--details'>
             <div className='details-img'>
