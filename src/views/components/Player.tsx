@@ -16,6 +16,8 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     let playAudio: Function;
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackProgress, setTrackProgress] = useState(0);
+    // const currentAudioFile = useRef(null);
+    const [currentAudioFile, setCurrentAudioFile] = useState(songs[currentSongIndex].getSong.songLocation);
 
     const { duration } = audioElement.current;
 
@@ -91,17 +93,8 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     }, [isPlaying, playAudio]);
 
 
-    // useEffect(() => {
-    //     return () => {
-    //         audioElement.current.pause();
-    //         clearInterval(intervalRef.current);
-    //     }
-    // }, []);
-
     useEffect(() => {
         // pauseAudio();
-
-        // audioElement.current = new Audio(songs[nextSongIndex].getSong.songLocation);
 
         setTrackProgress(audioElement.current.currentTime);
 
@@ -128,11 +121,13 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
         startTimer();
     }
 
-
+    console.log('song location: ' + songs[currentSongIndex].getSong.songLocation);
     return (
         <div>
             <div className='c-player' >
-                <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} muted={true}> </audio>
+                <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} muted={true} autoPlay={false}>
+                    <source ></source>
+                </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input
                     type='range'
