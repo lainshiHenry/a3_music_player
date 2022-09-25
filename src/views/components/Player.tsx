@@ -9,8 +9,7 @@ import { useCallback } from 'react';
 // };
 
 const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, songSelectedViaClick }: { currentSongIndex: number, setCurrentSongIndex: Function, nextSongIndex: number, songs: Song[], songSelectedViaClick: boolean }) => {
-    const htmlAudioElement = new Audio(songs[currentSongIndex].getSong.songLocation);
-    const audioElement = useRef(htmlAudioElement);
+    const audioElement = useRef(new Audio());
     const intervalRef = useRef(0);
     const isReady = useRef(false);
     let playAudio: Function;
@@ -20,6 +19,11 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     const [currentAudioFile, setCurrentAudioFile] = useState(songs[currentSongIndex].getSong.songLocation);
 
     const { duration } = audioElement.current;
+
+    const loadSongToAudioElement = useCallback(({ songToSet }: { songToSet: Song }) => {
+        audioElement.current.load();
+        audioElement.current = new Audio(songToSet.getSong.songLocation);
+    }, []);
 
     const SkipSong = useCallback((forwards = true) => {
         if (forwards) {
@@ -60,6 +64,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
 
     playAudio = useCallback(() => {
         let playPromise = document.querySelector('audio')?.play();
+        console.log(playPromise);
 
         if (playPromise) {
             playPromise
@@ -72,9 +77,14 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
                 .catch(function (error) {
                     console.log('error: ' + error);
                     const errorMessageHTMLelement = document.getElementById('errorMessage');
-                    if (errorMessageHTMLelement) {
-                        errorMessageHTMLelement.innerHTML = error;
-                    }
+                    if (errorMessageHTMLelement) errorMessageHTMLelement.innerHTML = 'error: ' + error;
+
+                    const errorAudioMessageHTMLelement = document.getElementById('audioOutput');
+                    if (errorAudioMessageHTMLelement) errorAudioMessageHTMLelement.innerHTML = 'audio output: ' + songs[currentSongIndex].getSong.songLocation;
+
+                    const errorHTMLAudioMessageHTMLelement = document.getElementById('HTMLaudioOutput');
+                    if (errorHTMLAudioMessageHTMLelement) errorHTMLAudioMessageHTMLelement.innerHTML = 'audio output: ' + audioElement.current.src;
+
 
                 });
         }
@@ -99,7 +109,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
 
 
     useEffect(() => {
-        // pauseAudio();
+        loadSongToAudioElement({ songToSet: songs[currentSongIndex] });
 
         setTrackProgress(audioElement.current.currentTime);
 
@@ -127,6 +137,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     }
 
     console.log('song location: ' + songs[currentSongIndex].getSong.songLocation);
+    console.log('currently loaded song: ' + audioElement.current.src);
     return (
         <div>
             <div className='c-player' >

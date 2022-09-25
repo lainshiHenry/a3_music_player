@@ -44,7 +44,12 @@ const MainScreen = () => {
         songs={songs}
         songSelectedViaClick={songSelectedViaClick}
       />
-      <p id="errorMessage"></p>
+
+      <div>
+        <span id="audioOutput"></span>
+        <span id="HTMLaudioOutput"></span>
+        <span id="errorMessage"></span>
+      </div>
     </div>
 
   );
