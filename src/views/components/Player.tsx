@@ -142,7 +142,6 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
         <div>
             <div className='c-player' >
                 <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} muted={true} autoPlay={false}>
-                    <source ></source>
                 </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input

@@ -6,8 +6,8 @@ const songsList: Song[] = [
     new Song({
         title: 'Circle of Seasons',
         artist: 'Sakuya, Tenma, Banri & Tsumugi',
-        img_src: 'assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        img_src: 'song_covers/mixed_troupe/circle_of_seasons.png',
+        src: 'circle_of_seasons.mp3',
     }),
     new Song({
         title: 'Spring has Come!',
