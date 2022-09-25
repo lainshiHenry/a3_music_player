@@ -6,8 +6,8 @@ const songsList: Song[] = [
     new Song({
         title: 'Circle of Seasons',
         artist: 'Sakuya, Tenma, Banri & Tsumugi',
-        img_src: 'song_covers/mixed_troupe/circle_of_seasons.png',
-        src: 'circle_of_seasons.mp3',
+        img_src: 'assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
+        src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
         title: 'Spring has Come!',
@@ -19,7 +19,8 @@ const songsList: Song[] = [
         title: 'Bokura no Kizuna',
         artist: 'Sakuya Sakuma & Masumi Usui',
         img_src: 'assets/images/song_covers/troupe_song/spring/bokura_no_kizuna.jpg',
-        src: 'assets/music/bokura_no_kizuna.mp3',
+        // src: 'assets/music/bokura_no_kizuna.mp3',
+        src: 'https://github.com/lainshiHenry/a3_music_player/blob/master/public/assets/music/bokura_no_kizuna.mp3',
     }),
     new Song({
         title: 'Akaikami No Cherry Blossom',
