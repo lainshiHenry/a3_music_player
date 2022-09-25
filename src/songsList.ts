@@ -20,7 +20,7 @@ const songsList: Song[] = [
         artist: 'Sakuya Sakuma & Masumi Usui',
         img_src: 'assets/images/song_covers/troupe_song/spring/bokura_no_kizuna.jpg',
         // src: 'assets/music/bokura_no_kizuna.mp3',
-        src: 'https://github.com/lainshiHenry/a3_music_player/blob/master/public/assets/music/bokura_no_kizuna.mp3',
+        src: 'ghttps://firebasestorage.googleapis.com/v0/b/a3-music-player.appspot.com/o/assets%2Fmusic%2Fbokura_no_kizuna.mp3?alt=media&token=c05cca61-5864-45dd-8496-c1a4140ac4d8',
     }),
     new Song({
         title: 'Akaikami No Cherry Blossom',
