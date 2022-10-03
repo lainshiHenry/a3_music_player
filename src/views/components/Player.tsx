@@ -4,10 +4,6 @@ import PlayerControls from './PlayerControls'
 import Song from '../../controller/class/Song';
 import { useCallback } from 'react';
 
-// interface Player {
-
-// };
-
 const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, songSelectedViaClick }: { currentSongIndex: number, setCurrentSongIndex: Function, nextSongIndex: number, songs: Song[], songSelectedViaClick: boolean }) => {
     const audioElement = useRef(new Audio());
     const intervalRef = useRef(0);
@@ -16,7 +12,6 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackProgress, setTrackProgress] = useState(0);
     // const currentAudioFile = useRef(null);
-    const [currentAudioFile, setCurrentAudioFile] = useState(songs[currentSongIndex].getSong.songLocation);
 
     const { duration } = audioElement.current;
 
@@ -55,7 +50,9 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, s
 
         intervalRef.current = setInterval(() => {
             if (audioElement.current.ended) {
+                console.log('song ended');
                 SkipSong();
+
             } else {
                 setTrackProgress(audioElement.current.currentTime);
             }

@@ -18,7 +18,12 @@ body {
 
 .mainScreenLayout {
     display: flex;
+    flex-direction: row;
     margin-top: 0;
+}
+
+.mainScreenLayoutPortrait {
+    flex-direction: column;
 }
 
 .playlistSection {
