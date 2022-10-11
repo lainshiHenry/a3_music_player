@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Player from '../components/Player'
 import PlaylistController from '../../controller/PlaylistController'
 import Playlist from '../components/Playlist'
+import SelectFromList from '../components/SelectFromList'
 
 const MainScreen = () => {
   const playlistController: PlaylistController = new PlaylistController();
@@ -11,10 +12,8 @@ const MainScreen = () => {
   const [songs] = useState(playlistController.getCurrentPlaylist);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
-  let songSelectedViaClick: boolean = false;
 
   const selectSong = (index: number) => {
-    songSelectedViaClick = true;
     // console.log('index:' + index + ' song title: ' + songs[index].getSong.title + ' song artist: ' + songs[index].getSong.artist);
     setCurrentSongIndex(index);
 
@@ -32,6 +31,7 @@ const MainScreen = () => {
 
   return (
     <div className='mainScreenLayout'>
+      <SelectFromList />
       <Playlist
         songs={songs}
         currentSongIndex={currentSongIndex}
@@ -42,7 +42,6 @@ const MainScreen = () => {
         setCurrentSongIndex={selectSong}
         nextSongIndex={nextSongIndex}
         songs={songs}
-        songSelectedViaClick={songSelectedViaClick}
       />
 
       <div>

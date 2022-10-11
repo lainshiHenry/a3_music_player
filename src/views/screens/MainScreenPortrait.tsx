@@ -38,7 +38,6 @@ const MainScreenPortrait = () => {
                 setCurrentSongIndex={selectSong}
                 nextSongIndex={nextSongIndex}
                 songs={songs}
-                songSelectedViaClick={songSelectedViaClick}
             />
             <Playlist
                 songs={songs}

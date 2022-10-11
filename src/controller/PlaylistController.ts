@@ -17,7 +17,7 @@ export default class PlaylistController {
     }
 
     getNextSong() {
-        return this.playList.pop();
+        return this.playList[this.playList.length - 1] ? this.playList.pop() : null;
     }
 
     get getCurrentPlaylist() { return this.playList; }

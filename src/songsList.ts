@@ -37,25 +37,25 @@ const songsList: Song[] = [
         title: 'Oresama Natsu Summer',
         artist: 'Summer Troupe',
         img_src: 'assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        src: 'assets/music/oresama_natsu_summer.mp3',
     }),
     new Song({
         title: 'Rakuen Oasis',
         artist: 'Tenma Sumeragi & Yuki Rurikawa',
         img_src: 'assets/images/song_covers/troupe_song/summer/water_me.jpg',
-        src: 'assets/music/circle_of_seasons.mp3',
+        src: 'assets/music/rakuen_oasis.mp3',
     }),
     new Song({
         title: 'Natsu no Dilemma',
         artist: 'Tenma Sumeragi',
         img_src: 'assets/images/song_covers/characters/faces/tenma.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        src: 'assets/music/natsu_no_dilemma.mp3',
     }),
     new Song({
         title: 'Minority',
         artist: 'Yuki Rurikawa',
         img_src: 'assets/images/song_covers/characters/faces/yuki.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        src: 'assets/music/minority.mp3',
     }),
     new Song({
         title: 'oneXone',
@@ -66,20 +66,20 @@ const songsList: Song[] = [
     new Song({
         title: 'Ichiya Kagiri no Aibou',
         artist: 'Banri Settsu & Juza Hyodo',
-        img_src: 'assets/images/song_covers/mixed_troupe/circle_of_seasons.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        img_src: 'assets/images/song_covers/troupe_song/autumn/ichiya_kagiri_no_aibou.jpg',
+        src: 'assets/music/ichiya_kagiri_no_aibou.mp3',
     }),
     new Song({
         title: 'Super Ultra Easy Mode',
-        artist: 'Banri Settsu"',
+        artist: 'Banri Settsu',
         img_src: 'assets/images/song_covers/characters/faces/banri.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        src: 'assets/music/super_ultra_easy_mode.mp3',
     }),
     new Song({
         title: 'Loner',
         artist: 'Juza Hyodo',
         img_src: 'assets/images/song_covers/characters/faces/juza.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        src: 'assets/music/loner.mp3',
     }),
     new Song({
         title: 'To Bloom...',
@@ -97,7 +97,7 @@ const songsList: Song[] = [
         title: 'Keyword',
         artist: 'Tsumugi Tsukioka',
         img_src: 'assets/images/song_covers/characters/faces/tsumugi.png',
-        src: 'assets/music/circle_of_seasons.mp3',
+        src: 'assets/music/keyword.mp3',
     }),
     new Song({
         title: 'Beyond The Wall',
@@ -598,8 +598,8 @@ const songsList: Song[] = [
         src: 'assets/music/precious_to_us.mp3',
     }),
     new Song({
-        title: 'The Contract - Tsumugi Tsukioka & Taichi Nanao',
-        artist: '',
+        title: 'The Contract',
+        artist: 'Tsumugi Tsukioka & Taichi Nanao',
         img_src: 'assets/images/song_covers/troupe_song/winter/precious_to_us.png',
         src: 'assets/music/precious_to_us.mp3',
     }),
@@ -642,8 +642,20 @@ const songsList: Song[] = [
     new Song({
         title: 'Family Activation',
         artist: 'Itaru Chigasaki & Citron',
-        img_src: 'assets/images/song_covers/troupe_song/winter/precious_to_us.png',
-        src: 'assets/music/precious_to_us.mp3',
+        img_src: 'assets/images/song_covers/troupe_song/spring/family_activation.png',
+        src: 'assets/music/family_activation.mp3',
+    }),
+    new Song({
+        title: 'Kousui',
+        artist: 'Azami Izumida',
+        img_src: 'assets/images/song_covers/character_song/azami.png',
+        src: 'assets/music/kousui.mp3',
+    }),
+    new Song({
+        title: 'Yume Senri',
+        artist: 'Azuma Yukishiro & Citron',
+        img_src: 'assets/images/song_covers/mixed_troupe/yume_senri.png',
+        src: 'assets/music/yume_senri.mp3',
     }),
 ];
 

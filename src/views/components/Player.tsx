@@ -4,7 +4,7 @@ import PlayerControls from './PlayerControls'
 import Song from '../../controller/class/Song';
 import { useCallback } from 'react';
 
-const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs, songSelectedViaClick }: { currentSongIndex: number, setCurrentSongIndex: Function, nextSongIndex: number, songs: Song[], songSelectedViaClick: boolean }) => {
+const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }: { currentSongIndex: number, setCurrentSongIndex: Function, nextSongIndex: number, songs: Song[] }) => {
     const audioElement = useRef(new Audio());
     const intervalRef = useRef(0);
     const isReady = useRef(false);
