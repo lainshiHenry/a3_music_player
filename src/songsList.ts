@@ -48,13 +48,13 @@ const songsList: Song[] = [
     new Song({
         title: 'Natsu no Dilemma',
         artist: 'Tenma Sumeragi',
-        img_src: 'assets/images/song_covers/characters/faces/tenma.png',
+        img_src: 'assets/images/song_covers/character_song/tenma.png',
         src: 'assets/music/natsu_no_dilemma.mp3',
     }),
     new Song({
         title: 'Minority',
         artist: 'Yuki Rurikawa',
-        img_src: 'assets/images/song_covers/characters/faces/yuki.png',
+        img_src: 'assets/images/song_covers/character_song/yuki.png',
         src: 'assets/music/minority.mp3',
     }),
     new Song({
@@ -72,13 +72,13 @@ const songsList: Song[] = [
     new Song({
         title: 'Super Ultra Easy Mode',
         artist: 'Banri Settsu',
-        img_src: 'assets/images/song_covers/characters/faces/banri.png',
+        img_src: 'assets/images/song_covers/character_song/banri.png',
         src: 'assets/music/super_ultra_easy_mode.mp3',
     }),
     new Song({
         title: 'Loner',
         artist: 'Juza Hyodo',
-        img_src: 'assets/images/song_covers/characters/faces/juza.png',
+        img_src: 'assets/images/song_covers/character_song/juza.png',
         src: 'assets/music/loner.mp3',
     }),
     new Song({
@@ -96,13 +96,13 @@ const songsList: Song[] = [
     new Song({
         title: 'Keyword',
         artist: 'Tsumugi Tsukioka',
-        img_src: 'assets/images/song_covers/characters/faces/tsumugi.png',
+        img_src: 'assets/images/song_covers/character_song/tsumugi.png',
         src: 'assets/music/keyword.mp3',
     }),
     new Song({
         title: 'Beyond The Wall',
         artist: 'Tasuku Takato',
-        img_src: 'assets/images/song_covers/characters/faces/tasuku.png',
+        img_src: 'assets/images/song_covers/character_song/tasuku.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
@@ -120,19 +120,19 @@ const songsList: Song[] = [
     new Song({
         title: 'Dandelion no Akubi',
         artist: 'Tsuzuru Minagi',
-        img_src: 'assets/images/song_covers/characters/faces/tsuzuru.png',
+        img_src: 'assets/images/song_covers/character_song/tsuzuru.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
         title: 'Gamer\'s High',
         artist: 'Itaru Chigasaki',
-        img_src: 'assets/images/song_covers/characters/faces/itaru.png',
+        img_src: 'assets/images/song_covers/character_song/itaru.png',
         src: 'assets/music/gamers_high.mp3',
     }),
     new Song({
         title: 'Citron no Tadashii Nihongo Koza?',
         artist: 'Citron',
-        img_src: 'assets/images/song_covers/characters/faces/citron.png',
+        img_src: 'assets/images/song_covers/character_song/citron.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
@@ -150,19 +150,19 @@ const songsList: Song[] = [
     new Song({
         title: 'Itsuka Oujisama ni...',
         artist: 'Muku Sakisaka',
-        img_src: 'assets/images/song_covers/characters/faces/muku.png',
+        img_src: 'assets/images/song_covers/character_song/muku.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
         title: 'Ichi Ni Sankaku',
         artist: 'Misumi Ikaruga',
-        img_src: 'assets/images/song_covers/characters/faces/misumi.png',
+        img_src: 'assets/images/song_covers/character_song/misumi.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
         title: 'Summer Time Love',
         artist: 'Kazunari Miyoshi',
-        img_src: 'assets/images/song_covers/characters/faces/kazunari.png',
+        img_src: 'assets/images/song_covers/character_song/kazunari.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
@@ -180,19 +180,19 @@ const songsList: Song[] = [
     new Song({
         title: 'Living The Dream',
         artist: 'Taichi Nanao',
-        img_src: 'assets/images/song_covers/characters/faces/taichi.png',
+        img_src: 'assets/images/song_covers/character_song/taichi.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
         title: 'Finder Goshi no Kizuna',
         artist: 'Omi Fushimi',
-        img_src: 'assets/images/song_covers/characters/faces/omi.png',
+        img_src: 'assets/images/song_covers/character_song/omi.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
         title: 'Ame no Monologue',
         artist: 'Sakyo Furuichi',
-        img_src: 'assets/images/song_covers/characters/faces/sakyo.png',
+        img_src: 'assets/images/song_covers/character_song/sakyo.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
@@ -210,7 +210,7 @@ const songsList: Song[] = [
     new Song({
         title: 'Traumerei to Kuhaku',
         artist: 'Hisoka Mikage',
-        img_src: 'assets/images/song_covers/characters/faces/hisoka.png',
+        img_src: 'assets/images/song_covers/character_song/hisoka.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
@@ -258,7 +258,7 @@ const songsList: Song[] = [
     new Song({
         title: 'Seiten no Sinker',
         artist: 'Kumon Hyodo',
-        img_src: 'assets/images/song_covers/characters/faces/kumon.png',
+        img_src: 'assets/images/song_covers/character_song/kumon.png',
         src: 'assets/music/circle_of_seasons.mp3',
     }),
     new Song({
@@ -618,26 +618,26 @@ const songsList: Song[] = [
     new Song({
         title: 'Shake the Shape',
         artist: 'Misumi Ikaruga & Kumon Hyodo',
-        img_src: 'assets/images/song_covers/troupe_song/winter/precious_to_us.png',
-        src: 'assets/music/precious_to_us.mp3',
+        img_src: 'assets/images/song_covers/troupe_song/summer/shake_the_shape.png',
+        src: 'assets/music/shake_the_shape.mp3',
     }),
     new Song({
         title: 'Hungry Neighbors',
         artist: 'Omi Fushimi & Sakyo Furuichi',
-        img_src: 'assets/images/song_covers/troupe_song/winter/precious_to_us.png',
-        src: 'assets/music/precious_to_us.mp3',
+        img_src: 'assets/images/song_covers/troupe_song/autumn/hungry_neighbors.png',
+        src: 'assets/music/hungry_neighbors.mp3',
     }),
     new Song({
         title: 'Continuation of the Grand Stay',
         artist: 'Azuma Yukishiro & Guy',
-        img_src: 'assets/images/song_covers/troupe_song/winter/precious_to_us.png',
-        src: 'assets/music/precious_to_us.mp3',
+        img_src: 'assets/images/song_covers/troupe_song/winter/continuation_of_the_grand_stay.png',
+        src: 'assets/music/continuation_of_the_grand_stay.mp3',
     }),
     new Song({
         title: 'Wandering Ghost',
         artist: 'Juza Hyodo & Azami Izumida',
-        img_src: 'assets/images/song_covers/troupe_song/winter/precious_to_us.png',
-        src: 'assets/music/precious_to_us.mp3',
+        img_src: 'assets/images/song_covers/troupe_song/autumn/wandering_ghost.png',
+        src: 'assets/music/wandering_ghost.mp3',
     }),
     new Song({
         title: 'Family Activation',
