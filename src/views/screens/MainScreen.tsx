@@ -31,7 +31,7 @@ const MainScreen = () => {
 
   return (
     <div className='mainScreenLayout'>
-      <SelectFromList />
+      {/* <SelectFromList /> */}
       <Playlist
         songs={songs}
         currentSongIndex={currentSongIndex}

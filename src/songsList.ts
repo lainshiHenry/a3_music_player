@@ -564,7 +564,7 @@ const songsList: Song[] = [
     new Song({
         title: 'Monologue',
         artist: 'Sakuya Sakuma',
-        img_src: 'assets/images/song_covers/monologue.png',
+        img_src: 'assets/images/song_covers/monologue.jpg',
         src: 'assets/music/monologue.mp3',
     }),
     new Song({
