@@ -31,7 +31,7 @@ const MainScreen = () => {
 
   return (
     <div className='mainScreenLayout'>
-      {/* <SelectFromList /> */}
+      <button id="playlistModalButton">Open Modal</button>
       <Playlist
         songs={songs}
         currentSongIndex={currentSongIndex}

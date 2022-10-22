@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import React, { useState } from 'react';
 import MainScreen from './views/screens/MainScreen';
 import MainScreenPortrait from './views/screens/MainScreenPortrait';
+import PlaylistModal from './views/components/PlaylistModal';
+import PlaylistController from './controller/PlaylistController';
 
 function _debounce(fn, ms) {
   let timer;
@@ -19,6 +21,7 @@ function App() {
     height: window.innerHeight,
     width: window.innerWidth,
   });
+  const playlistController = new PlaylistController();
 
   useEffect(() => {
     const debouncedHandleResize = _debounce(function handleRezise() {
@@ -36,6 +39,7 @@ function App() {
 
   return (
     <div className='App' id='App'>
+      <PlaylistModal />
       {dimension.height > dimension.width ? <MainScreenPortrait /> : <MainScreen />}
     </div>
   );
