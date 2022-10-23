@@ -24,6 +24,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
         console.log('location online: ' + song.getSong.songLocationOnline);
         console.log('localtion local: ' + song.getSong.songLocation);
         return song.getSong.songLocationOnline !== '' ? song.getSong.songLocationOnline : song.getSong.songLocation;
+        // return song.getSong.songLocationOnline;
     };
 
     const SkipSong = useCallback((forwards = true) => {
@@ -66,13 +67,13 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
     }, [SkipSong]);
 
     playAudio = useCallback(() => {
-        let playPromise = document.querySelector('audio')?.play();
+        let playPromise = document.querySelector('audio')!.play();
         console.log('Attempting to play automatically...');
 
         if (playPromise) {
             playPromise
                 .then(function () {
-                    // audioElement.current.play();
+                    audioElement.current.play();
                     audioElement.current.muted = false;
                     setIsPlaying(true);
                     startTimer();
@@ -131,13 +132,10 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
         startTimer();
     }
 
-    console.log('song location: ' + songs[currentSongIndex].getSong.songLocationOnline);
-
-
     return (
         <div>
             <div className='c-player' >
-                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false} typeof='audio/mpeg'>
+                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false} typeof='audio/mp3'>
                 </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input
