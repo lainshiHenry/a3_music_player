@@ -135,7 +135,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
     return (
         <div>
             <div className='c-player' >
-                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false} typeof='audio/mp3'>
+                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false} typeof='mp3'>
                 </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input
