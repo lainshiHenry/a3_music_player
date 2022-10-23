@@ -21,6 +21,8 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
     }, []);
 
     const getAudio = ({ song }: { song: Song }) => {
+        console.log('location online: ' + song.getSong.songLocationOnline);
+        console.log('localtion local: ' + song.getSong.songLocation);
         return song.getSong.songLocationOnline !== '' ? song.getSong.songLocationOnline : song.getSong.songLocation;
     };
 
@@ -65,28 +67,20 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
 
     playAudio = useCallback(() => {
         let playPromise = document.querySelector('audio')?.play();
-        console.log(playPromise);
+        console.log('Attempting to play automatically...');
 
         if (playPromise) {
             playPromise
                 .then(function () {
-                    audioElement.current.play();
+                    // audioElement.current.play();
                     audioElement.current.muted = false;
                     setIsPlaying(true);
                     startTimer();
+                    console.log('The play() Promise fulfilled! Rock on!');
                 })
                 .catch(function (error) {
+                    console.log('The play() Promise rejected!');
                     console.log('error: ' + error);
-                    // const errorMessageHTMLelement = document.getElementById('errorMessage');
-                    // if (errorMessageHTMLelement) errorMessageHTMLelement.innerHTML = 'error: ' + error;
-
-                    // const errorAudioMessageHTMLelement = document.getElementById('audioOutput');
-                    // if (errorAudioMessageHTMLelement) errorAudioMessageHTMLelement.innerHTML = 'audio output: ' + songs[currentSongIndex].getSong.songLocation;
-
-                    // const errorHTMLAudioMessageHTMLelement = document.getElementById('HTMLaudioOutput');
-                    // if (errorHTMLAudioMessageHTMLelement) errorHTMLAudioMessageHTMLelement.innerHTML = 'audio output: ' + audioElement.current.src;
-
-
                 });
         }
     }, [startTimer]);
@@ -143,7 +137,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
     return (
         <div>
             <div className='c-player' >
-                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false}>
+                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false} typeof='audio/mpeg'>
                 </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input
