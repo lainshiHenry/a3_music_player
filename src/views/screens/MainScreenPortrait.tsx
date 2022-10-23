@@ -24,7 +24,7 @@ const MainScreenPortrait = () => {
         console.log('modal is loading');
         var modal = document.getElementById("PlaylistModal")!;
         var openModalButton = document.getElementById("playlistModalButton");
-        var closeModalButton = document.getElementById("closeModalButton");
+        // var closeModalButton = document.getElementById("closeModalButton");
 
         if (openModalButton) {
             openModalButton.addEventListener('click', (e: MouseEvent) => {
@@ -32,11 +32,11 @@ const MainScreenPortrait = () => {
             });
         }
 
-        if (closeModalButton) {
-            closeModalButton.addEventListener('click', (e: MouseEvent) => {
-                modal.style.display = "none";
-            });
-        }
+        // if (closeModalButton) {
+        //     closeModalButton.addEventListener('click', (e: MouseEvent) => {
+        //         modal.style.display = "none";
+        //     });
+        // }
 
         // close modal on click outside of modal
         document.addEventListener('click', (e: MouseEvent) => {
@@ -60,7 +60,7 @@ const MainScreenPortrait = () => {
 
     return (
         <div className='mainScreenLayoutPortrait'>
-            <button id="playlistModalButton">Open Modal</button>
+            {/* <button id="playlistModalButton">Open Modal</button> */}
             <Player
                 currentSongIndex={currentSongIndex}
                 setCurrentSongIndex={selectSong}

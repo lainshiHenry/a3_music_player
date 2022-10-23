@@ -210,7 +210,7 @@ const songsList: Song[] = [
     new Song({
         title: 'Traumerei to Kuhaku',
         artist: 'Hisoka Mikage',
-        img_src: 'assets/images/song_covers/traumerei_to_kuhaku.png',
+        img_src: 'assets/images/song_covers/hisoka.png',
         src: 'assets/music/traumerei_to_kuhaku.mp3',
     }),
     new Song({
@@ -222,7 +222,7 @@ const songsList: Song[] = [
     new Song({
         title: 'Gekkoujou no Aria',
         artist: 'Azuma Yukishiro',
-        img_src: 'assets/images/song_covers/azami.png',
+        img_src: 'assets/images/song_covers/azuma.png',
         src: 'assets/music/gekkoujou_no_aria.mp3',
     }),
     new Song({
@@ -240,7 +240,7 @@ const songsList: Song[] = [
     new Song({
         title: 'Petenshi no Yuutsu',
         artist: 'Chikage Utsuki',
-        img_src: 'assets/images/song_covers/characters/faces/chikage.png',
+        img_src: 'assets/images/song_covers/chikage.png',
         src: 'assets/music/petenshi_no_yuutsu.mp3',
     }),
     new Song({
@@ -258,7 +258,7 @@ const songsList: Song[] = [
     new Song({
         title: 'Seiten no Sinker',
         artist: 'Kumon Hyodo',
-        img_src: 'assets/images/song_covers/seiten_no_sinker.png',
+        img_src: 'assets/images/song_covers/kumon.png',
         src: 'assets/music/seiten_no_sinker.mp3',
     }),
     new Song({

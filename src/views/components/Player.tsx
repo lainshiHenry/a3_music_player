@@ -73,14 +73,14 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
                 })
                 .catch(function (error) {
                     console.log('error: ' + error);
-                    const errorMessageHTMLelement = document.getElementById('errorMessage');
-                    if (errorMessageHTMLelement) errorMessageHTMLelement.innerHTML = 'error: ' + error;
+                    // const errorMessageHTMLelement = document.getElementById('errorMessage');
+                    // if (errorMessageHTMLelement) errorMessageHTMLelement.innerHTML = 'error: ' + error;
 
-                    const errorAudioMessageHTMLelement = document.getElementById('audioOutput');
-                    if (errorAudioMessageHTMLelement) errorAudioMessageHTMLelement.innerHTML = 'audio output: ' + songs[currentSongIndex].getSong.songLocation;
+                    // const errorAudioMessageHTMLelement = document.getElementById('audioOutput');
+                    // if (errorAudioMessageHTMLelement) errorAudioMessageHTMLelement.innerHTML = 'audio output: ' + songs[currentSongIndex].getSong.songLocation;
 
-                    const errorHTMLAudioMessageHTMLelement = document.getElementById('HTMLaudioOutput');
-                    if (errorHTMLAudioMessageHTMLelement) errorHTMLAudioMessageHTMLelement.innerHTML = 'audio output: ' + audioElement.current.src;
+                    // const errorHTMLAudioMessageHTMLelement = document.getElementById('HTMLaudioOutput');
+                    // if (errorHTMLAudioMessageHTMLelement) errorHTMLAudioMessageHTMLelement.innerHTML = 'audio output: ' + audioElement.current.src;
 
 
                 });
