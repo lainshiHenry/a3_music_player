@@ -20,6 +20,10 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
         audioElement.current = new Audio(songToSet.getSong.songLocation);
     }, []);
 
+    const getAudio = ({ song }: { song: Song }) => {
+        return song.getSong.songLocationOnline !== '' ? song.getSong.songLocationOnline : song.getSong.songLocation;
+    };
+
     const SkipSong = useCallback((forwards = true) => {
         if (forwards) {
             setCurrentSongIndex(() => {
@@ -133,12 +137,13 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
         startTimer();
     }
 
-    console.log('song location: ' + songs[currentSongIndex].getSong.songLocation);
-    console.log('currently loaded song: ' + audioElement.current.src);
+    console.log('song location: ' + songs[currentSongIndex].getSong.songLocationOnline);
+
+
     return (
         <div>
             <div className='c-player' >
-                <audio src={songs[currentSongIndex].getSong.songLocation} ref={audioElement} muted={true} autoPlay={false}>
+                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false}>
                 </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input
