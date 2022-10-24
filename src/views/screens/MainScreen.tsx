@@ -64,12 +64,12 @@ const MainScreen = () => {
         currentSongIndex={currentSongIndex}
         selectSong={selectSong}
       />
-      <Player
+      {/* <Player
         currentSongIndex={currentSongIndex}
         setCurrentSongIndex={selectSong}
         nextSongIndex={nextSongIndex}
         songs={songs}
-      />
+      /> */}
 
       <div>
         <span id="audioOutput"></span>

@@ -5,12 +5,8 @@ import Song from '../../controller/class/Song'
 function PlayerDetails({ song }: { song: Song; }) {
     function loadImageModal(song: Song) {
         const modalImageLocation: HTMLElement = document.getElementById("modalImage")!;
-        // const modalTextLocation: HTMLElement = document.getElementById("modalText")!;
         const songLocation = song.getSong.songImgUrl;
 
-        // if (modalTextLocation) {
-        //     modalTextLocation.innerHTML = song.getSong.title;
-        // }
         if (modalImageLocation) {
             modalImageLocation.setAttribute('src', songLocation);
         }

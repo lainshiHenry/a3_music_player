@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Player from '../components/Player'
 import PlaylistController from '../../controller/PlaylistController'
 import Playlist from '../components/Playlist'
@@ -6,25 +6,84 @@ import Playlist from '../components/Playlist'
 const MainScreenPortrait = () => {
     const playlistController: PlaylistController = new PlaylistController();
 
-
-    // const [songs] = useState(songsList);
     const [songs] = useState(playlistController.getCurrentPlaylist);
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(0);
-    let songSelectedViaClick: boolean = false;
+    const [prevSongIndex, setPrevSongIndex] = useState(0);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [currentSongTime, setCurrentSongTime] = useState(0);
+    const intervalRef: React.MutableRefObject<number> = useRef(0);
+
+    const audioElement: React.MutableRefObject<HTMLAudioElement> = useRef(new Audio());
+
+    const _startTimer = useCallback(() => {
+        clearInterval(intervalRef.current);
+        intervalRef.current = audioElement.current.currentTime;
+
+    }, []);
+
+    let currentAudioElementReadyState;
+
+    function _pauseAudio() {
+        audioElement.current.pause();
+        setIsPlaying(false);
+    };
+
+    const _playAudio = useCallback(() => {
+        var playPromise = audioElement.current.play();
+        console.log(playPromise);
+        console.log('Attempting to play automatically...');
+
+        if (playPromise !== undefined) {
+            playPromise
+                .then(() => {
+                    setIsPlaying(true);
+                    // startTimer();
+                    console.log('The play() Promise fulfilled! Rock on!');
+                    document.getElementById("errorMessage")!.innerHTML = '';
+                    document.getElementById("errorMessage")!.style.display = 'none';
+                })
+                .catch((error: string) => {
+                    console.log('The play() Promise rejected!');
+                    console.log('error: ' + error);
+                    document.getElementById("errorMessage")!.innerHTML = error;
+                    document.getElementById("errorMessage")!.style.display = 'block';
+                })
+        }
+        setIsPlaying(true);
+    }, [isPlaying]);
+
+    const _getNextSongIndex = (currSongIndex: number) => {
+        let _temp = currSongIndex;
+        _temp++;
+
+        if (_temp > songs.length - 1) {
+            _temp = 0;
+        }
+        return _temp;
+    }
+
+    const _getPrevSongIndex = (currSongIndex: number) => {
+        let _temp = currentSongIndex;
+        _temp--;
+
+        if (_temp < 0) {
+            _temp = songs.length - 1;
+        }
+        return _temp;
+    }
 
     const selectSong = (index: number) => {
-        songSelectedViaClick = true;
         // console.log('index:' + index + ' song title: ' + songs[index].getSong.title + ' song artist: ' + songs[index].getSong.artist);
         setCurrentSongIndex(index);
-
+        setNextSongIndex(_getNextSongIndex(index));
+        setPrevSongIndex(_getPrevSongIndex(index));
     }
 
     function loadModal() {
         console.log('modal is loading');
         var modal = document.getElementById("PlaylistModal")!;
         var openModalButton = document.getElementById("playlistModalButton");
-        // var closeModalButton = document.getElementById("closeModalButton");
 
         if (openModalButton) {
             openModalButton.addEventListener('click', (e: MouseEvent) => {
@@ -32,51 +91,49 @@ const MainScreenPortrait = () => {
             });
         }
 
-        // if (closeModalButton) {
-        //     closeModalButton.addEventListener('click', (e: MouseEvent) => {
-        //         modal.style.display = "none";
-        //     });
-        // }
-
         // close modal on click outside of modal
         document.addEventListener('click', (e: MouseEvent) => {
             if (e.target == modal) {
                 modal.style.display = "none";
             }
         });
+        console.log('modal is loaded');
     }
 
     useEffect(() => {
+        _pauseAudio();
         loadModal();
-        setNextSongIndex(() => {
-            if (currentSongIndex + 1 > songs.length - 1) {
-                return 0;
-            } else {
-                return currentSongIndex + 1;
-            }
-        });
+        console.log(audioElement.current);
+        console.log(audioElement.current.readyState);
+        currentAudioElementReadyState = audioElement.current.readyState;
 
-    }, [currentSongIndex, songs]);
+        _playAudio();
+    }, [currentSongIndex]);
+
+
 
     return (
         <div className='mainScreenLayoutPortrait'>
             {/* <button id="playlistModalButton">Open Modal</button> */}
             <Player
+                audioElement={audioElement}
+                songDuration={audioElement.current.duration}
+                currentSongTime={audioElement.current.currentTime}
+                setCurrentSongTime={setCurrentSongTime}
                 currentSongIndex={currentSongIndex}
                 setCurrentSongIndex={selectSong}
                 nextSongIndex={nextSongIndex}
                 songs={songs}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+                skipSongFunction={selectSong}
+                prevSongIndex={prevSongIndex}
             />
             <Playlist
                 songs={songs}
                 currentSongIndex={currentSongIndex}
                 selectSong={selectSong}
             />
-            <div>
-                <span id="audioOutput"></span>
-                <span id="HTMLaudioOutput"></span>
-                <span id="errorMessage"></span>
-            </div>
         </div>
 
     );
