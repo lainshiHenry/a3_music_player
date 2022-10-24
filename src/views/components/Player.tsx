@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import PlayerDetails from './PlayerDetails'
 import PlayerControls from './PlayerControls'
 import Song from '../../controller/class/Song';
@@ -11,23 +11,26 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
     let playAudio: Function;
     const [isPlaying, setIsPlaying] = useState(false);
     const [trackProgress, setTrackProgress] = useState(0);
-    // const currentAudioFile = useRef(null);
 
     const { duration } = audioElement.current;
 
     const loadSongToAudioElement = useCallback(({ songToSet }: { songToSet: Song }) => {
+        audioElement.current.pause();
         audioElement.current.load();
-        audioElement.current = new Audio(songToSet.getSong.songLocation);
+        audioElement.current = new Audio(getAudio({ song: songToSet }));
     }, []);
 
     const getAudio = ({ song }: { song: Song }) => {
         console.log('location online: ' + song.getSong.songLocationOnline);
         console.log('localtion local: ' + song.getSong.songLocation);
+
+        console.log(trackProgress + '/' + duration);
         return song.getSong.songLocationOnline !== '' ? song.getSong.songLocationOnline : song.getSong.songLocation;
         // return song.getSong.songLocationOnline;
     };
 
     const SkipSong = useCallback((forwards = true) => {
+        // pauseAudio();
         if (forwards) {
             setCurrentSongIndex(() => {
                 let temp = currentSongIndex;
@@ -49,7 +52,7 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
                 return temp;
             })
         }
-        playAudio();
+        // playAudio();
     }, [currentSongIndex, setCurrentSongIndex, songs]);
 
     const startTimer = useCallback(() => {
@@ -67,21 +70,26 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
     }, [SkipSong]);
 
     playAudio = useCallback(() => {
-        let playPromise = document.querySelector('audio')!.play();
+        var playPromise = document.querySelector('audio')!.play();
+        // var playPromise = audioElement.current.play();
         console.log('Attempting to play automatically...');
 
-        if (playPromise) {
+        if (playPromise !== undefined) {
             playPromise
                 .then(function () {
                     audioElement.current.play();
-                    audioElement.current.muted = false;
                     setIsPlaying(true);
                     startTimer();
                     console.log('The play() Promise fulfilled! Rock on!');
+                    document.getElementById("errorMessage")!.innerHTML = '';
+                    document.getElementById("errorMessage")!.style.display = 'none';
                 })
                 .catch(function (error) {
+                    setIsPlaying(false);
                     console.log('The play() Promise rejected!');
                     console.log('error: ' + error);
+                    document.getElementById("errorMessage")!.innerHTML = error;
+                    document.getElementById("errorMessage")!.style.display = 'block';
                 });
         }
     }, [startTimer]);
@@ -90,10 +98,6 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
         audioElement.current.pause();
         setIsPlaying(false);
     }
-
-
-
-
 
     useEffect(() => {
         if (isPlaying) {
@@ -109,33 +113,32 @@ const Player = ({ currentSongIndex, setCurrentSongIndex, nextSongIndex, songs }:
 
         setTrackProgress(audioElement.current.currentTime);
 
-        if (isReady.current) {
-            playAudio();
-        } else {
-            // isReady.current = true;
-        }
+        // if (isReady.current) {
+        //     playAudio();
+        // } else {
+        //     // isReady.current = true;
+        // }
 
     }, [currentSongIndex, nextSongIndex, songs, playAudio]);
 
 
 
     const onScrub = (value: number) => {
-        clearInterval(intervalRef.current);
         audioElement.current.currentTime = value;
         setTrackProgress(audioElement.current.currentTime);
     }
 
     const onScrubEnd = () => {
-        if (!isPlaying) {
-            setIsPlaying(true);
-        }
-        startTimer();
+        // audioElement.current.pause();
+        // setIsPlaying(true);
+        // audioElement.current.play();
+        // startTimer();
     }
 
     return (
         <div>
             <div className='c-player' >
-                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} muted={true} autoPlay={false} typeof='mp3'>
+                <audio src={getAudio({ song: songs[currentSongIndex] })} ref={audioElement} typeof='audio/mpeg'>
                 </audio>
                 <PlayerDetails song={songs[currentSongIndex]} />
                 <input

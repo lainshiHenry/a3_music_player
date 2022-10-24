@@ -10,6 +10,7 @@ const PlaylistModal = ({ songs, currentSongIndex, selectSong }: { songs: Song[],
                 {/* <p id="modalText">Some text</p> */}
                 <img id="modalImage" className="playlistModalImage" src="" alt=""></img>
                 {/* <p>{window.innerHeight} x {window.innerWidth}</p> */}
+                <span id="errorMessage"></span>
             </div>
         </div>
     )
