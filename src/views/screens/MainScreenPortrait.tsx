@@ -12,14 +12,19 @@ const MainScreenPortrait = () => {
     const [prevSongIndex, setPrevSongIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentSongTime, setCurrentSongTime] = useState(0);
-    const intervalRef: React.MutableRefObject<number> = useRef(0);
+    // const intervalRef: React.MutableRefObject<number> = useRef(0);
+    var intervalRef: number = 0;
+    const [trackProgress, setTrackProgress] = useState(0);
 
     const audioElement: React.MutableRefObject<HTMLAudioElement> = useRef(new Audio());
 
     const _startTimer = useCallback(() => {
-        clearInterval(intervalRef.current);
-        intervalRef.current = audioElement.current.currentTime;
-
+        // clearInterval(intervalRef.current);
+        // intervalRef.current = audioElement.current.currentTime;
+        intervalRef = setInterval(() => {
+            // console.log(intervalRef);
+            setTrackProgress(audioElement.current.currentTime);
+        }, 1000);
     }, []);
 
     let currentAudioElementReadyState;
@@ -100,11 +105,16 @@ const MainScreenPortrait = () => {
         console.log('modal is loaded');
     }
 
+    const onScrub = (value: number) => {
+        audioElement.current.currentTime = value;
+        setTrackProgress(audioElement.current.currentTime);
+    }
+
     useEffect(() => {
         _pauseAudio();
         loadModal();
-        console.log(audioElement.current);
-        console.log(audioElement.current.readyState);
+        // console.log(audioElement.current);
+        // console.log(audioElement.current.readyState);
         currentAudioElementReadyState = audioElement.current.readyState;
 
         _playAudio();
@@ -128,6 +138,11 @@ const MainScreenPortrait = () => {
                 setIsPlaying={setIsPlaying}
                 skipSongFunction={selectSong}
                 prevSongIndex={prevSongIndex}
+                onScrubFunction={onScrub}
+                trackProgress={trackProgress}
+                startTimerFunction={_startTimer}
+                pauseAudioFunction={_pauseAudio}
+                playAudioFunction={_playAudio}
             />
             <Playlist
                 songs={songs}
