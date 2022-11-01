@@ -5,9 +5,9 @@ import Playlist from '../components/Playlist'
 
 const MainScreenPortrait = () => {
     const playlistController: PlaylistController = new PlaylistController();
-
-    const [songs] = useState(playlistController.getCurrentPlaylist);
-    const [currentSongIndex, setCurrentSongIndex] = useState(0);
+    const currentSongInd: React.MutableRefObject<number> = useRef(0);
+    const [songs] = useState(playlistController.getCurrentPlaylist);    
+    // const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [nextSongIndex, setNextSongIndex] = useState(0);
     const [prevSongIndex, setPrevSongIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
@@ -19,15 +19,17 @@ const MainScreenPortrait = () => {
     const audioElement: React.MutableRefObject<HTMLAudioElement> = useRef(new Audio());
 
     const _startTimer = useCallback(() => {
-        // clearInterval(intervalRef.current);
-        // intervalRef.current = audioElement.current.currentTime;
         intervalRef = setInterval(() => {
-            // console.log(intervalRef);
             setTrackProgress(audioElement.current.currentTime);
+            
+            if(audioElement.current.currentTime === audioElement.current.duration) {
+                console.log("song has ended");
+                selectSong(_getNextSongIndex(currentSongInd.current));
+                clearInterval(intervalRef);
+                setTrackProgress(0);
+            }
         }, 1000);
     }, []);
-
-    let currentAudioElementReadyState;
 
     function _pauseAudio() {
         audioElement.current.pause();
@@ -43,7 +45,7 @@ const MainScreenPortrait = () => {
             playPromise
                 .then(() => {
                     setIsPlaying(true);
-                    // startTimer();
+                    
                     console.log('The play() Promise fulfilled! Rock on!');
                     document.getElementById("errorMessage")!.innerHTML = '';
                     document.getElementById("errorMessage")!.style.display = 'none';
@@ -69,7 +71,7 @@ const MainScreenPortrait = () => {
     }
 
     const _getPrevSongIndex = (currSongIndex: number) => {
-        let _temp = currentSongIndex;
+        let _temp = currSongIndex;
         _temp--;
 
         if (_temp < 0) {
@@ -79,8 +81,7 @@ const MainScreenPortrait = () => {
     }
 
     const selectSong = (index: number) => {
-        // console.log('index:' + index + ' song title: ' + songs[index].getSong.title + ' song artist: ' + songs[index].getSong.artist);
-        setCurrentSongIndex(index);
+        currentSongInd.current = index;
         setNextSongIndex(_getNextSongIndex(index));
         setPrevSongIndex(_getPrevSongIndex(index));
     }
@@ -113,14 +114,8 @@ const MainScreenPortrait = () => {
     useEffect(() => {
         _pauseAudio();
         loadModal();
-        // console.log(audioElement.current);
-        // console.log(audioElement.current.readyState);
-        currentAudioElementReadyState = audioElement.current.readyState;
-
         _playAudio();
-    }, [currentSongIndex]);
-
-
+    }, [currentSongInd.current]);
 
     return (
         <div className='mainScreenLayoutPortrait'>
@@ -130,7 +125,8 @@ const MainScreenPortrait = () => {
                 songDuration={audioElement.current.duration}
                 currentSongTime={audioElement.current.currentTime}
                 setCurrentSongTime={setCurrentSongTime}
-                currentSongIndex={currentSongIndex}
+                // currentSongIndex={currentSongIndex}
+                currentSongIndex={currentSongInd.current}
                 setCurrentSongIndex={selectSong}
                 nextSongIndex={nextSongIndex}
                 songs={songs}
@@ -146,7 +142,7 @@ const MainScreenPortrait = () => {
             />
             <Playlist
                 songs={songs}
-                currentSongIndex={currentSongIndex}
+                currentSongIndex={currentSongInd.current}
                 selectSong={selectSong}
             />
         </div>

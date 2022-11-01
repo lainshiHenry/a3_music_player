@@ -40,7 +40,8 @@ function App() {
   return (
     <div className='App' id='App'>
       <PlaylistModal />
-      {dimension.height > dimension.width ? <MainScreenPortrait /> : <MainScreen />}
+      {/* {dimension.height > dimension.width ? <MainScreenPortrait /> : <MainScreen />} */}
+      <MainScreenPortrait />
     </div>
   );
 }
