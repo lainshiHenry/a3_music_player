@@ -787,6 +787,34 @@ const songsList: Song[] = [
         img_src: 'assets/images/song_covers/yume_senri.png',
         src: 'assets/music/yume_senri.mp3',
     }),
+    new Song({
+        title: 'Literary Impasse',
+        artist: 'Tzusuru Minagi & Sakuya Sakuma',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/literary_impasse.mp3',
+        img_src: 'assets/images/song_covers/literary_impasse.png',
+        src: 'assets/music/literary_impasse.mp3',
+    }),
+    new Song({
+        title: 'Sky Gallery',
+        artist: 'Kazunari Miyoshi & Tenma Sumeragi',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/sky_gallery.mp3',
+        img_src: 'assets/images/song_covers/sky_gallery.png',
+        src: 'assets/music/sky_gallery.mp3',
+    }),
+    new Song({
+        title: 'Dawn Of The Red',
+        artist: 'Taichi Nanao & Banri Settsu',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/dawn_of_the_red.mp3',
+        img_src: 'assets/images/song_covers/dawn_of_the_red.png',
+        src: 'assets/music/dawn_of_the_red.mp3',
+    }),
+    new Song({
+        title: 'Bouquet',
+        artist: 'Hisoka Mikage & Tsumugi Tsukioka',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/bouquet.mp3',
+        img_src: 'assets/images/song_covers/bouquet.png',
+        src: 'assets/music/bouquet.mp3',
+    }),
 ];
 
 export default songsList;
