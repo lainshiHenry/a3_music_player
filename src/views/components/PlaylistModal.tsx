@@ -17,9 +17,3 @@ const PlaylistModal = ({ songs, currentSongIndex, selectSong }: { songs: Song[],
 }
 
 export default PlaylistModal
-
-/*<Playlist
-                songs={songs}
-                currentSongIndex={currentSongIndex}
-                selectSong={selectSong}
-            /> */

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react'
+import React, { useState, useEffect, useCallback, useRef } from 'react'
 import Player from '../components/Player'
 import PlaylistController from '../../controller/PlaylistController'
 import Playlist from '../components/Playlist'
@@ -36,12 +36,44 @@ const MainScreenPortrait = () => {
         setIsPlaying(false);
     };
 
+    function _loadAudio(){
+        audioElement.current.load();
+        audioElement.current.src = songs[currentSongInd.current].getSong.songLocationOnline;
+        setIsPlaying(false);
+
+    }
+
     const _playAudio = useCallback(() => {
+        // // audioElement.current.src = songs[currentSongInd.current].getSong.songLocationOnline;
+        // console.log(songs[currentSongInd.current].getSong.songLocationOnline);
+        // fetch(songs[currentSongInd.current].getSong.songLocationOnline, {
+        //     mode: 'no-cors',
+        // })
+        //     .then(response => {
+        //         console.log(`response: ${response.url}`);
+        //         response.blob() 
+        //     })
+        //     .then(blob => {
+        //         console.log(blob);
+        //         // audioElement.current.srcObject = blob;
+        //         // return audioElement.current.play();
+        //     })
+        //     .then(_ => {
+        //         setIsPlaying(true);
+        //         console.log('The play() Promise fulfilled! Rock on!');
+        //     })
+        //     .catch(e => {
+        //         setIsPlaying(false);
+        //         console.log('The play() Promise rejected!');
+        //         console.log('error: ' + e);
+                
+        //     })
         var playPromise = audioElement.current.play();
         console.log(playPromise);
         console.log('Attempting to play automatically...');
 
         if (playPromise !== undefined) {
+        // if (playPromise === 'fulfilled') {
             playPromise
                 .then(() => {
                     setIsPlaying(true);
@@ -55,6 +87,7 @@ const MainScreenPortrait = () => {
                     console.log('error: ' + error);
                     document.getElementById("errorMessage")!.innerHTML = error;
                     document.getElementById("errorMessage")!.style.display = 'block';
+                    _pauseAudio();
                 })
         }
         setIsPlaying(true);
@@ -80,7 +113,8 @@ const MainScreenPortrait = () => {
         return _temp;
     }
 
-    const selectSong = (index: number) => {
+    function selectSong (index: number) {
+        // _pauseAudio();
         currentSongInd.current = index;
         setNextSongIndex(_getNextSongIndex(index));
         setPrevSongIndex(_getPrevSongIndex(index));
@@ -93,14 +127,17 @@ const MainScreenPortrait = () => {
 
         if (openModalButton) {
             openModalButton.addEventListener('click', (e: MouseEvent) => {
+                
                 modal.style.display = "block";
+                console.log('modal opened');
             });
         }
-
+        
         // close modal on click outside of modal
         document.addEventListener('click', (e: MouseEvent) => {
-            if (e.target == modal) {
+            if (e.target === modal) {
                 modal.style.display = "none";
+                console.log('modal closed');
             }
         });
         console.log('modal is loaded');
@@ -114,6 +151,7 @@ const MainScreenPortrait = () => {
     useEffect(() => {
         _pauseAudio();
         loadModal();
+        _loadAudio();
         _playAudio();
     }, [currentSongInd.current]);
 

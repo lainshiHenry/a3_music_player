@@ -9,9 +9,6 @@ const Playlist = ({ songs, currentSongIndex, selectSong }: { songs: Song[], curr
             <ul className='playlist'>
                 {
                     songs.map((element: Song, index: number) => {
-                        // return currentSongIndex === index ?
-                        //     <li key={element.getSong.title}><b>{element.getSong.title} - {element.getSong.artist}</b></li> :
-                        //     <li key={element.getSong.title} onClick={() => selectSong(index)}>{element.getSong.title} - {element.getSong.artist}</li>
                         return <PlaylistRowItem
                             song={element}
                             currentSongIndex={currentSongIndex}

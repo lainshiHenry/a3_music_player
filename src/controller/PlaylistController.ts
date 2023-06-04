@@ -2,7 +2,7 @@ import Song from './class/Song'
 import '../songsList'
 import songsList from '../songsList';
 
-declare module PlaylistController { };
+// declare module PlaylistController { };
 
 export default class PlaylistController {
     playList: Song[] = [];
