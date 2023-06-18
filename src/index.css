@@ -164,14 +164,13 @@ body {
 .c-player--controls {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-bottom: 5%;
     margin-top: 5%;
 }
 
 .c-player--controls .play-btn {
     display: flex;
-    margin: 0 30px;
     padding: 10px;
     border-radius: 50%;
     /* box-shadow:
@@ -187,7 +186,7 @@ body {
     cursor: pointer;
 }
 
-.c-player--controls .skip-btn {
+.c-player--controls .skip-btn, .shuffle-btn, .repeat-btn {
     background: none;
     border: none;
     outline: none;

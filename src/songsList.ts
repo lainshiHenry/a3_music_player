@@ -1047,6 +1047,46 @@ const songsList: Song[] = [
 		posterImg_src: 'assets/images/song_covers/bouquet_poster.png',
 		src: 'assets/music/bouquet.mp3',
     }),
+    new Song({
+        title: 'Meteor Trail',
+        artist: 'Tzusuru & Chikage',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/meteor_trail.mp3',
+        img_src: 'assets/images/song_covers/meteor_trail.png',
+		   posterImg_src: 'assets/images/song_covers/meteor_trail_poster.png',
+		   src: 'assets/music/meteor_trail.mp3',
+    }),  
+    new Song({
+        title: 'Say You Kidding Me',
+        artist: 'Kumon Hyodo & Kazunari',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/say_you_kidding_me.mp3',
+        img_src: 'assets/images/song_covers/say_you_kidding_me.png',
+		   posterImg_src: 'assets/images/song_covers/say_you_kidding_me_poster.png',
+		   src: 'assets/music/say_you_kidding_me.mp3',
+    }),
+    new Song({
+        title: 'Hana Ga Saku Basho De (花が咲く場所で)',
+        artist: 'Sakuya Sakuma, Masumi Usui & Banri Settsu',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/hana_ga_saku_basho_de.mp3',
+        img_src: 'assets/images/song_covers/hana_ga_saku_basho_de.png',
+		   posterImg_src: 'assets/images/song_covers/hana_ga_saku_basho_de_poster.png',
+		   src: 'assets/music/hana_ga_saku_basho_de.mp3',
+    }),
+    new Song({
+        title: 'All Night Tenpai Fever',
+        artist: 'Citron, Kazunari, Azuma & Sakyo',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/all_night_tenpai_fever.mp3',
+        img_src: 'assets/images/song_covers/all_night_tenpai_fever.png',
+		   posterImg_src: 'assets/images/song_covers/all_night_tenpai_fever_poster.png',
+		   src: 'assets/music/all_night_tenpai_fever.mp3',
+    }),
+    new Song({
+        title: 'Yorimichi Kibun',
+        artist: 'Tenma, Juza & Taichi',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/yorimichi_kibun.mp3',
+        img_src: 'assets/images/song_covers/yorimichi_kibun.png',
+		   posterImg_src: 'assets/images/song_covers/yorimichi_kibun_poster.png',
+		   src: 'assets/music/yorimichi_kibun.mp3',
+    }),
 ];
 
 export default songsList;
