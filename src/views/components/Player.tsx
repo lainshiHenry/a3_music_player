@@ -7,7 +7,6 @@ import { useCallback } from 'react';
 const Player = ({
     audioElement,
     currentSongTime,
-    setCurrentSongTime,
     songDuration,
     currentSongIndex,
     setCurrentSongIndex,
@@ -16,16 +15,16 @@ const Player = ({
     skipSongFunction,
     isPlaying,
     setIsPlaying,
+    isRepeat, 
+    setIsRepeat,
     prevSongIndex,
     trackProgress,
-    startTimerFunction,
     onScrubFunction,
     pauseAudioFunction,
     playAudioFunction,
 }: {
     audioElement: React.MutableRefObject<HTMLAudioElement>,
     currentSongTime: number,
-    setCurrentSongTime: Function,
     songDuration: number,
     currentSongIndex: number,
     setCurrentSongIndex: Function,
@@ -34,9 +33,10 @@ const Player = ({
     skipSongFunction: Function,
     isPlaying: boolean,
     setIsPlaying: Function,
+    isRepeat: boolean,
+    setIsRepeat: Function,
     prevSongIndex: number,
     trackProgress: number,
-    startTimerFunction: Function,
     onScrubFunction: Function,
     pauseAudioFunction: Function,
     playAudioFunction: Function,
@@ -48,10 +48,10 @@ const Player = ({
     };
 
     useEffect(() => {
-        console.log('looking at isPlaying');
+        // console.log('looking at isPlaying');
         if (isPlaying) {
             playAudioFunction();
-            startTimerFunction();
+        //     startTimerFunction();
         } else {
             pauseAudioFunction();
         }
@@ -79,6 +79,8 @@ const Player = ({
                     currentSongIndex={currentSongIndex}
                     nextSongIndex={nextSongIndex}
                     prevSongIndex={prevSongIndex}
+                    isRepeat={isRepeat}
+                    setIsRepeat={setIsRepeat}
                 />
                 {/* <p><strong>Next up:</strong> {songs[nextSongIndex].getSong.title} by {songs[nextSongIndex].getSong.artist}</p> */}
             </div>
