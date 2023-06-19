@@ -3,7 +3,7 @@ import Player from '../components/Player'
 import PlaylistController from '../../controller/PlaylistController'
 import Playlist from '../components/Playlist'
 
-const MainScreenPortrait = () => {
+const MainScreenPortrait = ({versionNumber}: {versionNumber: string}) => {
     const playlistController: PlaylistController = new PlaylistController();
     const currentSongInd: React.MutableRefObject<number> = useRef(0);
     const [songs] = useState(playlistController.getCurrentPlaylist);    
@@ -183,8 +183,8 @@ const MainScreenPortrait = () => {
                 currentSongIndex={currentSongInd.current}
                 selectSong={selectSong}
             />
+            <span>Version: {versionNumber}</span>
         </div>
-
     );
 }
 

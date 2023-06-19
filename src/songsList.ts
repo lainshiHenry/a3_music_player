@@ -1068,7 +1068,7 @@ const songsList: Song[] = [
         artist: 'Sakuya Sakuma, Masumi Usui & Banri Settsu',
         src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/hana_ga_saku_basho_de.mp3',
         img_src: 'assets/images/song_covers/hana_ga_saku_basho_de.png',
-		   posterImg_src: 'assets/images/song_covers/hana_ga_saku_basho_de_poster.png',
+		   posterImg_src: 'assets/images/song_covers/hana_ga_saku_basho_de.png',
 		   src: 'assets/music/hana_ga_saku_basho_de.mp3',
     }),
     new Song({
@@ -1076,7 +1076,7 @@ const songsList: Song[] = [
         artist: 'Citron, Kazunari, Azuma & Sakyo',
         src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/all_night_tenpai_fever.mp3',
         img_src: 'assets/images/song_covers/all_night_tenpai_fever.png',
-		   posterImg_src: 'assets/images/song_covers/all_night_tenpai_fever_poster.png',
+		   posterImg_src: 'assets/images/song_covers/all_night_tenpai_fever.png',
 		   src: 'assets/music/all_night_tenpai_fever.mp3',
     }),
     new Song({
@@ -1084,8 +1084,16 @@ const songsList: Song[] = [
         artist: 'Tenma, Juza & Taichi',
         src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/yorimichi_kibun.mp3',
         img_src: 'assets/images/song_covers/yorimichi_kibun.png',
-		   posterImg_src: 'assets/images/song_covers/yorimichi_kibun_poster.png',
+		   posterImg_src: 'assets/images/song_covers/yorimichi_kibun.png',
 		   src: 'assets/music/yorimichi_kibun.mp3',
+    }),
+    new Song({
+        title: 'Fist 2 Fist',
+        artist: 'Omi, Sakyo & Azami',
+        src_online: 'https://a3songs.s3.us-east-2.amazonaws.com/fist_2_fist.mp3',
+        img_src: 'assets/images/song_covers/fist_2_fist.png',
+		   posterImg_src: 'assets/images/song_covers/fist_2_fist.png',
+		   src: 'assets/music/fist_2_fist.mp3',
     }),
 ];
 

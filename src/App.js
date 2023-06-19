@@ -17,6 +17,9 @@ function _debounce(fn, ms) {
 }
 
 function App() {
+  const versionNumber = '1.0.5';
+
+
   const [dimension, setDimensions] = useState({
     height: window.innerHeight,
     width: window.innerWidth,
@@ -41,7 +44,7 @@ function App() {
     <div className='App' id='App'>
       <PlaylistModal />
       {/* {dimension.height > dimension.width ? <MainScreenPortrait /> : <MainScreen />} */}
-      <MainScreenPortrait />
+      <MainScreenPortrait versionNumber={versionNumber} />
     </div>
   );
 }
